@@ -1,0 +1,18 @@
+.model small
+.data
+source db 02,03,04,05,06
+len db $-source
+dest db 05 dup(0)
+.code
+mov ax,@data
+mov ds,ax
+mov si,00
+mov cl,len
+back:mov bl,source[si]
+mov dest[si],bl
+inc si
+dec cl
+jnz back
+mov ah,4ch
+int 21h
+end
