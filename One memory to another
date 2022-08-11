@@ -1,0 +1,18 @@
+.model small
+.data
+ARRAY DB 1,2,3,4,5
+len dw ($-ARRAY)
+sum db ?
+.code
+MOV AX,@DATA
+MOV DS,AX
+MOV SI,00
+MOV AX,00
+MOV CX,len
+LOOP1:ADD AL,ARRAY[SI]
+INC SI
+LOOP LOOP1
+MOV sum,al
+MOV AH,4CH
+INT 21h
+END
